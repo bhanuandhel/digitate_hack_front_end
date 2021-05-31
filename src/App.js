@@ -6,8 +6,13 @@ import TeamlistContainer from './components/Layout/TeamList/TeamlistContainer';
 import LoginContainer from './components/Login/LoginContainer';
 import RegisterContainer from './components/Register/RegisterContainer';
 
+import { Provider } from 'react-redux'
+import store from './redux/store'
+
+
 const App = () => {
     return (
+        <Provider store={store}>
         <Router>
             <NavbarContainer />
             <Route exact path="/"><TeamlistContainer /></Route>
@@ -15,6 +20,7 @@ const App = () => {
             <Route exact path="/register"><RegisterContainer /></Route>
             <Footer />
         </Router>
+        </Provider>
     );
 };
 
