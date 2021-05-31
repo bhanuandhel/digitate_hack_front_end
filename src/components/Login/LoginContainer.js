@@ -11,7 +11,7 @@ const LoginContainer = () => {
     const [user, setUser] = useState(init);
 
     const handleChange = (e) =>{
-
+            setUser({...user, [e.target.name]:e.target.value})
     }
     
     const handleSubmit = (e) =>{
