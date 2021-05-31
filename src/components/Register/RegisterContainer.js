@@ -9,9 +9,23 @@ const init = {
 }
 
 const RegisterContainer = () => {
-    const [user, setUser] = useState(init)
+    const [user, setUser] = useState(init);
+
+    const handleChange = (e) =>{
+
+    }
+    
+    const handleSubmit = (e) =>{
+        e.preventDefault()
+        console.log(user)
+    }
+
     return (
-        <RegisterView />
+        <RegisterView 
+        {...user} 
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        />
     )
 }
 
