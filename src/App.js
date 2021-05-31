@@ -8,6 +8,7 @@ import RegisterContainer from './components/Register/RegisterContainer';
 
 import { Provider } from 'react-redux'
 import store from './redux/store'
+import NewTeamContainer from './components/NewTeam/NewTeamContainer';
 
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
             <Route exact path="/"><TeamlistContainer /></Route>
             <Route exact path="/login"><LoginContainer /></Route>
             <Route exact path="/register"><RegisterContainer /></Route>
+            <Route exact path="/createTeam"><NewTeamContainer /></Route>
             <Footer />
         </Router>
         </Provider>
