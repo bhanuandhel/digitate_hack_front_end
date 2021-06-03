@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import LoginView from './LoginView'
-
+import { useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from "react-redux";
+import { loginUser } from "../../redux/action/authActions";
 
 const init = {
     email:"",
@@ -8,6 +10,9 @@ const init = {
 }
 
 const LoginContainer = () => {
+    let history = useHistory();
+    const dispatch = useDispatch();
+    const authStatus = useSelector((auth) => auth);
     const [user, setUser] = useState(init);
 
     const handleChange = (e) =>{
@@ -16,7 +21,8 @@ const LoginContainer = () => {
     
     const handleSubmit = (e) =>{
         e.preventDefault()
-        console.log(user)
+          dispatch(loginUser(user, history));
+        //   history.push("/");
     }
 
     return (
@@ -24,6 +30,7 @@ const LoginContainer = () => {
         {...user} 
         handleChange={handleChange}
         handleSubmit={handleSubmit}
+        {...authStatus}
         />
     )
 }
