@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import LoginView from './LoginView'
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
-import { loginUser } from "../../redux/action/authActions";
+import { loginUser, clearErrors } from "../../redux/action/authActions";
 
 const init = {
     email:"",
@@ -14,6 +14,10 @@ const LoginContainer = () => {
     const dispatch = useDispatch();
     const authStatus = useSelector((auth) => auth);
     const [user, setUser] = useState(init);
+
+    useEffect(() => {
+        dispatch(clearErrors())
+    }, [])
 
     const handleChange = (e) =>{
             setUser({...user, [e.target.name]:e.target.value})

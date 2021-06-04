@@ -29,7 +29,18 @@ export const loginUser = (user, history) => dispatch => {
 
 // register user
 export const registeUser = (user, history) => dispatch => {
-
+  dispatch(authRequest());
+  dispatch(clearErrors());
+  axios.post(
+    `${apiBaseURL}/api/user/register`,
+    user,
+  ).then(res => {
+    dispatch(authResponse())
+    history.push("/login");
+  }).catch(err => {
+    dispatch(authResponse())
+    dispatch(setError(err.response.data.error))
+  })
 }
 
 

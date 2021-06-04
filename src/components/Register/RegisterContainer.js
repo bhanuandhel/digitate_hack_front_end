@@ -1,5 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import RegisterView from './RegisterView'
+import { useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from "react-redux";
+import { registeUser, clearErrors } from '../../redux/action/authActions';
 
 const init = {
     username:"",
@@ -9,15 +12,22 @@ const init = {
 }
 
 const RegisterContainer = () => {
+    let history = useHistory();
+    const dispatch = useDispatch();
+    const authStatus = useSelector((auth) => auth);
     const [user, setUser] = useState(init);
 
-    const handleChange = (e) =>{
+    useEffect(() => {
+        dispatch(clearErrors())
+    }, [])
 
+    const handleChange = (e) =>{
+        setUser({...user, [e.target.name]:e.target.value})
     }
     
     const handleSubmit = (e) =>{
         e.preventDefault()
-        console.log(user)
+        dispatch(registeUser(user, history));
     }
 
     return (
@@ -25,6 +35,7 @@ const RegisterContainer = () => {
         {...user} 
         handleChange={handleChange}
         handleSubmit={handleSubmit}
+        {...authStatus}
         />
     )
 }

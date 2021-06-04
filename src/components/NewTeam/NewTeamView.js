@@ -34,7 +34,7 @@ const NewTeamView = (props) => {
                                     // error={error.desc}
                                 />
                                
-                                    <button type="submit" class="btn btn-primary" style={{float:"right"}}>Create Team</button>
+                                    <button type="submit" className="btn btn-primary" style={{float:"right"}}>Create Team</button>
                             </form>
                     </div>
                 </div>

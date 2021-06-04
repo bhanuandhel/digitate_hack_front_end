@@ -34,7 +34,7 @@ const LoginView = (props) => {
                                     error={error.password}
                                 />
                                
-                                    <button type="submit" class="btn btn-success" style={{float:"right"}}>Login</button>
+                                    <button type="submit" className="btn btn-success" style={{float:"right"}}>Login</button>
                             </form>
                     </div>
                 </div>
