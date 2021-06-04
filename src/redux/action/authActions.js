@@ -65,6 +65,21 @@ export const registeUser = (user, history) => dispatch => {
   })
 }
 
+// logout user
+export const logoutUser = (history) => dispatch => {
+  // logout user
+  dispatch(clearUser())
+
+  // clear localstorage
+  localStorage.clear()
+
+  // remove HTTP Header auth token from axios
+  setAuthToken(false)
+
+  // redirect to home page
+  history.push("/")
+}
+
 
 
 // Set User
