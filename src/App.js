@@ -9,7 +9,17 @@ import RegisterContainer from './components/Register/RegisterContainer';
 import { Provider } from 'react-redux'
 import store from './redux/store'
 import NewTeamContainer from './components/NewTeam/NewTeamContainer';
+import setAuthToken from './utils/setAuthToken';
+import { setUser } from './redux/action/authActions';
 
+// set data from localStorage
+
+if(localStorage.jwtToken && localStorage.user){
+    setAuthToken(localStorage.jwtToken)
+
+  //  dispatch set user action to auth reducer
+    store.dispatch(setUser(JSON.parse(localStorage.user)));
+}
 
 const App = () => {
     return (

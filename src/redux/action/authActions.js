@@ -10,6 +10,7 @@ import {
 import { apiBaseURL } from "../../utils/constant";
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import setAuthToken from '../../utils/setAuthToken';
 
 // login user
 export const loginUser = (user, history) => dispatch => {
@@ -20,6 +21,21 @@ export const loginUser = (user, history) => dispatch => {
     user,
   ).then(res => {
     dispatch(authResponse())
+
+    dispatch(setUser(res.data.user));
+
+    // set jwt token in localstorage
+    localStorage.setItem("jwtToken", res.data.token)
+    localStorage.setItem("user", JSON.stringify(res.data.user))
+
+    // set  token into axios HTTP header
+
+    setAuthToken(res.data.token);
+
+    // redireact user to admin page
+
+    history.push("/createTeam")
+
   }).catch(err => {
     dispatch(authResponse())
     dispatch(setError(err.response.data.error))
