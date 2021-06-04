@@ -9,6 +9,7 @@ import {
 
 import { apiBaseURL } from "../../utils/constant";
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 // login user
 export const loginUser = (user, history) => dispatch => {
@@ -36,6 +37,11 @@ export const registeUser = (user, history) => dispatch => {
     user,
   ).then(res => {
     dispatch(authResponse())
+    Swal.fire(
+      'User Registration',
+      res.data.message,
+      'success'
+    )
     history.push("/login");
   }).catch(err => {
     dispatch(authResponse())
