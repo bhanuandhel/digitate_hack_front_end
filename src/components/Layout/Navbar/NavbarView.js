@@ -9,6 +9,7 @@ const NavbarView = (props) => {
         links = (
             <React.Fragment>
                 <Link className="nav-link" aria-current="page" to="/createTeam"><i className="fas fa-plus-circle text-warning pe-2"></i>Team</Link>
+                <Link className="nav-link" aria-current="page" to="/my">My Team</Link>
                 <Link className="nav-link" aria-current="page" to="#" onClick={props.logout} >Logout</Link>
             </React.Fragment>
         )
