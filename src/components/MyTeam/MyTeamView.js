@@ -10,8 +10,8 @@ const MyTeamView = (props) => {
             </div>
             )
         }else{
-            out = props.teamList.map(team =>(
-                <div className="col-md-6 text-center">
+            out = props.teamList.map((team, i) =>(
+                <div className="col-md-6 text-center" key={i}>
                 <TeamCard
                     title={team.name}
                     text={"Team created by @"+team.user.username}

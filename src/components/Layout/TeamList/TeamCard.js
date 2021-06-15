@@ -12,10 +12,10 @@ const TeamCard = (props) => {
             <div className="card-body">
                 <div className="row">
                     <div className="col-md-4">
-                        <img src="assets/img/team_logo.png" className="rounded-circle img-fluid"  />
+                        <img src="assets/img/team_logo.png" alt={props.title} className="rounded-circle img-fluid"  />
                     </div>
                     <div className="col-md-8">
-                        {title && <h5 className="card-title">{props.title}</h5>}
+                        {title && <h5 className="card-title text-capitalize">{props.title}</h5>}
                         {text && <p className="card-text">{props.text}</p>}
                         {description && <p className="card-text">{props.description}</p>}
                         {btn_text && <a href="#" className="btn btn-danger">{props.btn_text}</a>}
