@@ -6,6 +6,7 @@ import store from './redux/store'
 import setAuthToken from './utils/setAuthToken';
 import { setUser } from './redux/action/authActions';
 
+import PrivateRoute from './components/common/PrivateRoute';
 import Footer from './components/Layout/Footer';
 import TeamlistContainer from './components/Layout/TeamList/TeamlistContainer';
 import LoginContainer from './components/Login/LoginContainer';
@@ -15,25 +16,33 @@ import MyTeamContainer from './components/MyTeam/MyTeamContainer';
 
 // set data from localStorage
 
-if(localStorage.jwtToken && localStorage.user){
+if (localStorage.jwtToken && localStorage.user) {
     setAuthToken(localStorage.jwtToken)
 
-  //  dispatch set user action to auth reducer
+    //  dispatch set user action to auth reducer
     store.dispatch(setUser(JSON.parse(localStorage.user)));
 }
 
 const App = () => {
     return (
         <Provider store={store}>
-        <Router>
-            <NavbarContainer />
-            <Route exact path="/"><TeamlistContainer /></Route>
-            <Route exact path="/login"><LoginContainer /></Route>
-            <Route exact path="/register"><RegisterContainer /></Route>
-            <Route exact path="/createTeam"><NewTeamContainer /></Route>
-            <Route exact path="/my"><MyTeamContainer /></Route>
-            <Footer />
-        </Router>
+            <Router>
+                <NavbarContainer />
+                <Route exact path="/"><TeamlistContainer /></Route>
+                <Route exact path="/login"><LoginContainer /></Route>
+                <Route exact path="/register"><RegisterContainer /></Route>
+                <Route exact path="/createTeam">
+                    <PrivateRoute>
+                        <NewTeamContainer />
+                    </PrivateRoute>
+                </Route>
+                <Route exact path="/my">
+                    <PrivateRoute>
+                        <MyTeamContainer />
+                    </PrivateRoute>
+                </Route>
+                <Footer />
+            </Router>
         </Provider>
     );
 };

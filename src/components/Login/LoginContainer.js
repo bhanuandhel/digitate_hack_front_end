@@ -16,6 +16,9 @@ const LoginContainer = () => {
     const [user, setUser] = useState(init);
 
     useEffect(() => {
+        if(authStatus.auth.isAuthenticated){
+            history.push('/my')
+         }
         dispatch(clearErrors())
     }, [])
 

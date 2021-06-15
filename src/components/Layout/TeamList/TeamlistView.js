@@ -32,7 +32,7 @@ const TeamlistView = (props) => {
         ))
     }
     return (
-        <div className="container-fluid py-5">
+        <div className="container-fluid py-5 bg-secondary">
         <div className="container">
             <div className="row">
                

@@ -34,7 +34,7 @@ export const loginUser = (user, history) => dispatch => {
 
     // redireact user to admin page
 
-    history.push("/createTeam")
+    history.push("/my")
 
   }).catch(err => {
     dispatch(authResponse())
