@@ -2,8 +2,10 @@
 // import teamReducer from './teamReducer'
 import  authReducers  from "./authReducers";
 import { combineReducers } from 'redux'
+import teamReducers from "./teamReducers";
 
 
 export default combineReducers({
-  auth: authReducers
+  auth: authReducers,
+  teams: teamReducers
 })
