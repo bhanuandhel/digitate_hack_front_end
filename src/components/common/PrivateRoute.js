@@ -1,9 +1,9 @@
 import React from 'react'
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Redirect } from 'react-router-dom';
 
 const PrivateRoute = (props) => {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const authStatus = useSelector((auth) => auth);
 
     if(authStatus.auth.isAuthenticated){

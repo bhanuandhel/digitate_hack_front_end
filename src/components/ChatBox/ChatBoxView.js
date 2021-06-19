@@ -1,7 +1,10 @@
 import React from 'react'
+import TextFieldInput from '../common/TextFieldinput'
 import ChatList from './ChatList'
-
-const ChatBoxView = () => {
+import IncomingMessage from './IncomingMessage'
+import OutgoingMessage from './OutgoingMessage'
+ 
+const ChatBoxView = (props) => {
     return (
         <div className="container-fluid py-5">
             <div className="container">
@@ -44,6 +47,16 @@ const ChatBoxView = () => {
                         </div>
                         <div className="mesgs">
                             <div className="msg_history">
+                                <IncomingMessage
+                                    message="incoming which is a new approach to have all solutions"
+                                    time="11:01 AM"
+                                    date="June 9"
+                                />
+                                 <OutgoingMessage  
+                                    message="outgoing which is a new approach to have all solutions"
+                                    time="11:01 AM"
+                                    date="June 9"
+                                />
                                 <div className="incoming_msg">
                                     <div className="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" /> </div>
                                     <div className="received_msg">
@@ -53,6 +66,7 @@ const ChatBoxView = () => {
                                             <span className="time_date"> 11:01 AM    |    June 9</span></div>
                                     </div>
                                 </div>
+                               
                                 <div className="outgoing_msg">
                                     <div className="sent_msg">
                                         <p>Test which is a new approach to have all
@@ -85,15 +99,20 @@ const ChatBoxView = () => {
                             </div>
                             <div className="type_msg">
                                 <div className="input_msg_write">
-                                    <input type="text" className="write_msg" placeholder="Type a message" />
-                                    <button className="msg_send_btn" type="button"><i className="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                                    <TextFieldInput
+                                        type="text"
+                                        className="write_msg"
+                                        placeholder="Type a message" 
+                                        name="message"
+                                        id="message"
+                                        value={props.message}
+                                        onChange={props.handleChange}
+                                    />
+                                    <button className="msg_send_btn" onClick={props.handleSubmit} type="button"><i className="far fa-comment-dots text-warning"></i></button>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
-                    <p className="text-center top_spac"> Design by <a target="_blank" href="https://www.linkedin.com/in/sunil-rajput-nattho-singh/">Sunil Rajput</a></p>
 
                 </div>
             </div>
