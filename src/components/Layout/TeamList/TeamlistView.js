@@ -27,6 +27,7 @@ const TeamlistView = (props) => {
                     text={"Team created by @"+team.user.username}
                     description ={team.description}
                     btn_text="Join Now"
+                    tid={team._id}
                 />
             </div>
         ))

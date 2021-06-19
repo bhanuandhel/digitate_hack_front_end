@@ -33,6 +33,11 @@ const App = () => {
                 <Route exact path="/login"><LoginContainer /></Route>
                 <Route exact path="/register"><RegisterContainer /></Route>
                 <Route exact path="/chat-box"><ChatBoxContainer /></Route>
+                {/* <Route exact path="/chat-box">
+                    <PrivateRoute>
+                        <ChatBoxContainer />
+                    </PrivateRoute>
+                </Route> */}
                 <Route exact path="/createTeam">
                     <PrivateRoute>
                         <NewTeamContainer />

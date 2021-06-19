@@ -6,7 +6,8 @@ const TeamCard = (props) => {
         title,
         text,
         description,
-        btn_text
+        btn_text,
+        tid
     } = props
     return (
         <div className="card shadow animate__animated animate__rubberBand p-3 mb-5 bg-body rounded">
@@ -19,7 +20,7 @@ const TeamCard = (props) => {
                         {title && <h5 className="card-title text-capitalize">{props.title}</h5>}
                         {text && <p className="card-text">{props.text}</p>}
                         {description && <p className="card-text">{props.description}</p>}
-                        {btn_text && <Link to={`chat-box`} className="btn btn-danger">{props.btn_text}</Link>}
+                        {btn_text && <Link to={`chat-box?tid=${tid}`} className="btn btn-danger">{props.btn_text}</Link>}
                     </div>
                 </div>
                
