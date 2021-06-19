@@ -13,6 +13,7 @@ import LoginContainer from './components/Login/LoginContainer';
 import RegisterContainer from './components/Register/RegisterContainer';
 import NewTeamContainer from './components/NewTeam/NewTeamContainer';
 import MyTeamContainer from './components/MyTeam/MyTeamContainer';
+import ChatBoxContainer from './components/ChatBox/ChatBoxContainer';
 
 // set data from localStorage
 
@@ -31,6 +32,7 @@ const App = () => {
                 <Route exact path="/"><TeamlistContainer /></Route>
                 <Route exact path="/login"><LoginContainer /></Route>
                 <Route exact path="/register"><RegisterContainer /></Route>
+                <Route exact path="/chat-box"><ChatBoxContainer /></Route>
                 <Route exact path="/createTeam">
                     <PrivateRoute>
                         <NewTeamContainer />

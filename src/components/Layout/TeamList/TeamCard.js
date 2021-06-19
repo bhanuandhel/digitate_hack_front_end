@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 const TeamCard = (props) => {
     const {
@@ -18,7 +19,7 @@ const TeamCard = (props) => {
                         {title && <h5 className="card-title text-capitalize">{props.title}</h5>}
                         {text && <p className="card-text">{props.text}</p>}
                         {description && <p className="card-text">{props.description}</p>}
-                        {btn_text && <a href="#" className="btn btn-danger">{props.btn_text}</a>}
+                        {btn_text && <Link to={`chat-box`} className="btn btn-danger">{props.btn_text}</Link>}
                     </div>
                 </div>
                
