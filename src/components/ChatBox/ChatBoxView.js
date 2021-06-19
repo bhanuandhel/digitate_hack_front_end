@@ -1,4 +1,5 @@
 import React from 'react'
+import ChatList from './ChatList'
 
 const ChatBoxView = () => {
     return (
@@ -31,66 +32,14 @@ const ChatBoxView = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="chat_list">
-                                <div className="chat_people">
-                                    <div className="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" /> </div>
-                                    <div className="chat_ib">
-                                        <h5>Sunil Rajput <span className="chat_date">Dec 25</span></h5>
-                                        <p>Test, which is a new approach to have all solutions
-                                            astrology under one roof.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="chat_list">
-                                <div className="chat_people">
-                                    <div className="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" /> </div>
-                                    <div className="chat_ib">
-                                        <h5>Sunil Rajput <span className="chat_date">Dec 25</span></h5>
-                                        <p>Test, which is a new approach to have all solutions
-                                            astrology under one roof.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="chat_list">
-                                <div className="chat_people">
-                                    <div className="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" /> </div>
-                                    <div className="chat_ib">
-                                        <h5>Sunil Rajput <span className="chat_date">Dec 25</span></h5>
-                                        <p>Test, which is a new approach to have all solutions
-                                            astrology under one roof.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="chat_list">
-                                <div className="chat_people">
-                                    <div className="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" /> </div>
-                                    <div className="chat_ib">
-                                        <h5>Sunil Rajput <span className="chat_date">Dec 25</span></h5>
-                                        <p>Test, which is a new approach to have all solutions
-                                            astrology under one roof.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="chat_list">
-                                <div className="chat_people">
-                                    <div className="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" /> </div>
-                                    <div className="chat_ib">
-                                        <h5>Sunil Rajput <span className="chat_date">Dec 25</span></h5>
-                                        <p>Test, which is a new approach to have all solutions
-                                            astrology under one roof.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="chat_list">
-                                <div className="chat_people">
-                                    <div className="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" /> </div>
-                                    <div className="chat_ib">
-                                        <h5>Sunil Rajput <span className="chat_date">Dec 25</span></h5>
-                                        <p>Test, which is a new approach to have all solutions
-                                            astrology under one roof.</p>
-                                    </div>
-                                </div>
-                            </div>
+                            <ChatList 
+
+                            username="bhanu pratap"
+                            date ="Dec 31"
+                            description="Android app developer"
+                            // isActive={true}
+
+                            />
                         </div>
                     </div>
                     <div className="mesgs">
