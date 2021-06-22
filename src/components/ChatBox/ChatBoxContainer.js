@@ -17,18 +17,52 @@ const init = {
 const ChatBoxContainer = () => {
     const [message, setMessage] = useState('');
     const [team, setTeam] = useState(init);
+    const [users, setUsers] = useState([]);
     const { search } = useLocation();
     const id = new URLSearchParams(search).get('tid');
 
     useEffect(async () => {
         await getChatBoxData(id);
+        await getTeamUserName(id);
     }, [])
+
+    // get team data
 
     const getChatBoxData = (tid) => {
         axios.post(
             `${apiBaseURL}/api/team/getTeam/${tid}`
         ).then(res => {
             setTeam(res.data.team)
+        }).catch(err => {
+
+        })
+    }
+
+    // get team user name
+
+    const getTeamUserName = async (tid) => {
+        axios.post(
+            `${apiBaseURL}/api/chat/getTeamUser`,
+            {
+                team: tid
+            }
+        ).then(res => {
+            const users = res.data.users;
+            users.map((item, index)=>{
+                getUserDetails(item)
+            })
+        }).catch(err => {
+
+        })
+    }
+
+    const getUserDetails = (userId) =>{
+        axios.get(
+            `${apiBaseURL}/api/user/getUser/${userId}`,
+        ).then(res => {
+            let temp = users
+            temp.push(res.data.user)
+            setUsers(temp)
         }).catch(err => {
 
         })
@@ -42,6 +76,9 @@ const ChatBoxContainer = () => {
         e.preventDefault()
         console.log(message)
     }
+
+        console.log(users)
+
     return (
         <ChatBoxView
             {...message}

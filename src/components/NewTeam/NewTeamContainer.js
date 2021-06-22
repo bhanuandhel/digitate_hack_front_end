@@ -17,6 +17,7 @@ const NewTeamContainer = () => {
     let history = useHistory();
     const dispatch = useDispatch();
     const teamStatus = useSelector((teams) => teams);
+    const authStatus = useSelector((auth) => auth);
 
     useEffect(() => {
         dispatch(clearErrors())
@@ -28,10 +29,15 @@ const NewTeamContainer = () => {
         
     const handleSubmit = (e) =>{
         e.preventDefault()
-        console.log(team)
+       console.log(authStatus.auth.user.id)
+
+       let chatMessage = {
+           message : "Send any message to joing this group",
+           to : authStatus.auth.user.id
+       }
 
         // dispatch create new team action
-        dispatch(createNewTeam(team, history));
+        dispatch(createNewTeam(team, history, chatMessage));
     }
     
     return (
