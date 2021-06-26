@@ -3,21 +3,19 @@ import TextFieldInput from '../common/TextFieldinput'
 import ChatList from './ChatList'
 import IncomingMessage from './IncomingMessage'
 import OutgoingMessage from './OutgoingMessage'
- 
+
 const ChatBoxView = (props) => {
     // console.log(props)
-    const team_user_list = props.users?props.users.map((user, index)=>{
+    const team_user_list = props.users ? props.users.map((user, index) => {
         return <ChatList
             key={index}
             i={index}
             username={user.username}
             date={user.createdAt.split(';')[0]}
             description={props.description}
-        // isActive={true}
             onClick={props.handleUserClick}
-
         />
-    }) :''
+    }) : ''
     return (
         <div className="container-fluid py-5">
             <div className="container">
@@ -50,7 +48,7 @@ const ChatBoxView = (props) => {
                                     time="11:01 AM"
                                     date="June 9"
                                 />
-                                 <OutgoingMessage  
+                                <OutgoingMessage
                                     message="outgoing which is a new approach to have all solutions"
                                     time="11:01 AM"
                                     date="June 9"
@@ -64,7 +62,7 @@ const ChatBoxView = (props) => {
                                             <span className="time_date"> 11:01 AM    |    June 9</span></div>
                                     </div>
                                 </div>
-                               
+
                                 <div className="outgoing_msg">
                                     <div className="sent_msg">
                                         <p>Test which is a new approach to have all
@@ -100,7 +98,7 @@ const ChatBoxView = (props) => {
                                     <TextFieldInput
                                         type="text"
                                         className="write_msg"
-                                        placeholder="Type a message" 
+                                        placeholder="Type a message"
                                         name="message"
                                         id="message"
                                         value={props.message}

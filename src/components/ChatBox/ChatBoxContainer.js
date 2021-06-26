@@ -49,7 +49,7 @@ const ChatBoxContainer = () => {
             }
         ).then(res => {
             const users = res.data.users;
-            users.map((item, index)=>{
+            users.map((item, index) => {
                 getUserDetails(item)
             })
         }).catch(err => {
@@ -57,11 +57,11 @@ const ChatBoxContainer = () => {
         })
     }
 
-    const getUserDetails = (userId) =>{
+    const getUserDetails = (userId) => {
         axios.get(
             `${apiBaseURL}/api/user/getUser/${userId}`,
         ).then(res => {
-            let temp = users.length>0?users:[]
+            let temp = users.length > 0 ? users : []
             temp.push(res.data.user)
             setUsers(temp)
         }).catch(err => {
@@ -75,21 +75,33 @@ const ChatBoxContainer = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(message)
+        // Send AJAX Call to create new Chat Message
+        const chatMessage = {
+            message: message,
+            team: id
+        }
+        axios.post(
+            `${apiBaseURL}/api/chat/new`,
+            chatMessage
+        ).then(res => {
+            setMessage('')
+        }).catch(err => {
+
+        })
     }
 
     const handleUserClick = (e, id) => {
         e.preventDefault()
-        if(oldCLID==''){
+        if (oldCLID == '') {
             document.getElementById(id).classList.add("active_chat");
             setoldCLID(id)
-        }else{
+        } else {
             document.getElementById(oldCLID).classList.remove("active_chat");
             setoldCLID(id)
             document.getElementById(id).classList.add("active_chat");
         }
     }
-        // console.log(users)
+    // console.log(users)
 
     return (
         <ChatBoxView
