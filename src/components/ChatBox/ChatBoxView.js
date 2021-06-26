@@ -5,6 +5,19 @@ import IncomingMessage from './IncomingMessage'
 import OutgoingMessage from './OutgoingMessage'
  
 const ChatBoxView = (props) => {
+    // console.log(props)
+    const team_user_list = props.users?props.users.map((user, index)=>{
+        return <ChatList
+            key={index}
+            i={index}
+            username={user.username}
+            date={user.createdAt.split(';')[0]}
+            description={props.description}
+        // isActive={true}
+            onClick={props.handleUserClick}
+
+        />
+    }) :''
     return (
         <div className="container-fluid py-5">
             <div className="container">
@@ -27,13 +40,7 @@ const ChatBoxView = (props) => {
                                 </div>
                             </div>
                             <div className="inbox_chat">
-                                <ChatList
-                                    username="bhanu pratap"
-                                    date="Dec 31"
-                                    description="Android app developer"
-                                // isActive={true}
-
-                                />
+                                {team_user_list}
                             </div>
                         </div>
                         <div className="mesgs">

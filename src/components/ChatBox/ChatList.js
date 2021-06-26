@@ -1,12 +1,12 @@
 import React from 'react'
 
 const ChatList = (props) => {
-    const { username, date, description, isActive } = props
+    const { username, date, description, onClick, i } = props
 
-    const activeClass = (isActive === true ? "active_chat" : "")
+    // const activeClass = (isActive === true ? "active_chat" : "")
 
     return (
-        <div className={`chat_list ${activeClass}`}>
+        <div id={"cl_"+i} className="chat_list"  onClick={(e) =>{onClick(e, ("cl_"+i))}}>
             <div className="chat_people">
                 <div className="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="avatar" /> </div>
                 <div className="chat_ib">

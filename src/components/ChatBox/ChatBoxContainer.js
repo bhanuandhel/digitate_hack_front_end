@@ -18,6 +18,7 @@ const ChatBoxContainer = () => {
     const [message, setMessage] = useState('');
     const [team, setTeam] = useState(init);
     const [users, setUsers] = useState([]);
+    const [oldCLID, setoldCLID] = useState('');
     const { search } = useLocation();
     const id = new URLSearchParams(search).get('tid');
 
@@ -60,7 +61,7 @@ const ChatBoxContainer = () => {
         axios.get(
             `${apiBaseURL}/api/user/getUser/${userId}`,
         ).then(res => {
-            let temp = users
+            let temp = users.length>0?users:[]
             temp.push(res.data.user)
             setUsers(temp)
         }).catch(err => {
@@ -77,14 +78,28 @@ const ChatBoxContainer = () => {
         console.log(message)
     }
 
-        console.log(users)
+    const handleUserClick = (e, id) => {
+        e.preventDefault()
+        if(oldCLID==''){
+            document.getElementById(id).classList.add("active_chat");
+            setoldCLID(id)
+        }else{
+            document.getElementById(oldCLID).classList.remove("active_chat");
+            setoldCLID(id)
+            document.getElementById(id).classList.add("active_chat");
+        }
+    }
+        // console.log(users)
 
     return (
         <ChatBoxView
+            // {...users}
             {...message}
             {...team}
+            users={users}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
+            handleUserClick={handleUserClick}
         />
     )
 }
