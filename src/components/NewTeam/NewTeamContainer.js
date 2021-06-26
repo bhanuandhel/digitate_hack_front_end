@@ -29,15 +29,14 @@ const NewTeamContainer = () => {
         
     const handleSubmit = (e) =>{
         e.preventDefault()
-       console.log(authStatus.auth.user.id)
+    //    console.log(authStatus.auth.user.id)
 
-       let chatMessage = {
-           message : "Send any message to joing this group",
-           to : authStatus.auth.user.id
-       }
+    //    let chatMessage = {
+    //        message : "Send any message to joing this group"
+    //    }
 
         // dispatch create new team action
-        dispatch(createNewTeam(team, history, chatMessage));
+        dispatch(createNewTeam(team, history));
     }
     
     return (
