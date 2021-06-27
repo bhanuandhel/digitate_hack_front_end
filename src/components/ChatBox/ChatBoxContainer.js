@@ -3,6 +3,8 @@ import ChatBoxView from './ChatBoxView'
 import { useLocation } from "react-router-dom";
 import axios from 'axios';
 import { apiBaseURL } from '../../utils/constant'
+import { useSelector, useDispatch } from "react-redux";
+
 
 const init = {
     _id: '',
@@ -23,10 +25,17 @@ const ChatBoxContainer = () => {
     const { search } = useLocation();
     const id = new URLSearchParams(search).get('tid');
 
+    const authStatus = useSelector((auth) => auth);
+
     useEffect(async () => {
         await getChatBoxData(id);
-        await getTeamUserName(id);
-        await getMessages(id);
+
+        // get all chat messages after every 5 seconds
+         setInterval(() => {
+            getTeamUserName(id);
+            getMessages(id);
+        }, 500);
+
     }, [])
 
     // get team data
@@ -104,7 +113,7 @@ const ChatBoxContainer = () => {
         }
     }
 
-    const getMessages = (tid)  =>{
+    const getMessages = (tid) => {
         // send Ajax call to get all Chat Message
         axios.post(
             `${apiBaseURL}/api/chat/getMessages/${tid}`
@@ -119,8 +128,9 @@ const ChatBoxContainer = () => {
     return (
         <ChatBoxView
             // {...users}
-            {...message}
             {...team}
+            message ={message}
+            auth ={authStatus.auth.user}
             messages={messages}
             users={users}
             handleChange={handleChange}

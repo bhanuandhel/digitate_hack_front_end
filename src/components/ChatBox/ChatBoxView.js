@@ -5,7 +5,7 @@ import IncomingMessage from './IncomingMessage'
 import OutgoingMessage from './OutgoingMessage'
 
 const ChatBoxView = (props) => {
-    
+    // console.log(props.auth)
     const team_user_list = props.users ? props.users.map((user, index) => {
         return <ChatList
             key={index}
@@ -17,15 +17,25 @@ const ChatBoxView = (props) => {
         />
     }) : '';
 
-    const get_messages = props.messages.map((item, index) =>(
-        <IncomingMessage
-        username={item.from.username}
-        message ={item.message}
-        time={item.createdAt.split(';')[1]}
-        date={item.createdAt.split(';')[0]}
-        key={index}
-        />
-    ))
+    const get_messages = props.messages.map((item, index) => {
+        if (item.from._id == props.auth.id) {
+            return <OutgoingMessage
+                username={item.from.username}
+                message={item.message}
+                time={item.createdAt.split(';')[1]}
+                date={item.createdAt.split(';')[0]}
+                key={index}
+            />
+        } else {
+            return <IncomingMessage
+                username={item.from.username}
+                message={item.message}
+                time={item.createdAt.split(';')[1]}
+                date={item.createdAt.split(';')[0]}
+                key={index}
+            />
+        }
+    })
     return (
         <div className="container-fluid py-5">
             <div className="container">
@@ -59,12 +69,12 @@ const ChatBoxView = (props) => {
                                     date="June 9"
                                 /> */}
                                 {get_messages}
-                                <OutgoingMessage
+                                {/* <OutgoingMessage
                                     message="outgoing which is a new approach to have all solutions"
                                     time="11:01 AM"
                                     date="June 9"
-                                />
-                              </div>
+                                /> */}
+                            </div>
                             <div className="type_msg">
                                 <div className="input_msg_write">
                                     <TextFieldInput
