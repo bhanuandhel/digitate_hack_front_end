@@ -19,12 +19,14 @@ const ChatBoxContainer = () => {
     const [team, setTeam] = useState(init);
     const [users, setUsers] = useState([]);
     const [oldCLID, setoldCLID] = useState('');
+    const [messages, setMessages] = useState([]);
     const { search } = useLocation();
     const id = new URLSearchParams(search).get('tid');
 
     useEffect(async () => {
         await getChatBoxData(id);
         await getTeamUserName(id);
+        await getMessages(id);
     }, [])
 
     // get team data
@@ -101,6 +103,17 @@ const ChatBoxContainer = () => {
             document.getElementById(id).classList.add("active_chat");
         }
     }
+
+    const getMessages = (tid)  =>{
+        // send Ajax call to get all Chat Message
+        axios.post(
+            `${apiBaseURL}/api/chat/getMessages/${tid}`
+        ).then(res => {
+            setMessages(res.data.messages)
+        }).catch(err => {
+
+        })
+    }
     // console.log(users)
 
     return (
@@ -108,6 +121,7 @@ const ChatBoxContainer = () => {
             // {...users}
             {...message}
             {...team}
+            messages={messages}
             users={users}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
